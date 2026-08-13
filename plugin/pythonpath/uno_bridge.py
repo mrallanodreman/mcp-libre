@@ -9,8 +9,6 @@ import uno
 import unohelper
 from com.sun.star.beans import PropertyValue
 from com.sun.star.text import XTextDocument
-from com.sun.star.sheet import XSpreadsheetDocument
-from com.sun.star.presentation import XPresentationDocument
 from com.sun.star.document import XDocumentEventListener
 from com.sun.star.awt import XActionListener
 from typing import Any, Optional, Dict, List
@@ -20,6 +18,25 @@ import traceback
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Calc/Impress type libraries aren't always loaded in every UNO context this
+# extension runs in (e.g. during unopkg's own registration pass, or a
+# Writer-only session). These are only used for isinstance() checks below, so
+# fall back to an unmatchable sentinel class rather than hard-failing the
+# whole module -- Writer support (XTextDocument, imported above) still works.
+try:
+    from com.sun.star.sheet import XSpreadsheetDocument
+except ImportError:
+    logger.warning("com.sun.star.sheet.XSpreadsheetDocument unavailable in this context")
+    class XSpreadsheetDocument:
+        pass
+
+try:
+    from com.sun.star.presentation import XPresentationDocument
+except ImportError:
+    logger.warning("com.sun.star.presentation.XPresentationDocument unavailable in this context")
+    class XPresentationDocument:
+        pass
 
 
 class UNOBridge:

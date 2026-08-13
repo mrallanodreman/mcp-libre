@@ -5,8 +5,8 @@
 
 set -e
 
-PLUGIN_DIR="/home/patrick/work/mcp/mcp-libre/plugin"
-BUILD_DIR="/home/patrick/work/mcp/mcp-libre/build"
+PLUGIN_DIR="/run/media/pctorre/HddCompiler/mcp/mcp-libre/plugin"
+BUILD_DIR="/run/media/pctorre/HddCompiler/mcp/mcp-libre/build"
 
 echo "🎯 LibreOffice MCP Extension - Installation & Usage Guide"
 echo "========================================================"
