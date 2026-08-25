@@ -105,5 +105,3 @@ local_config.json
 mcp_test_*
 temp_documents/
 
-# Generado en runtime por scripts/lo-mcp-live.sh
-scripts/_dispatch_start_mcp.py
