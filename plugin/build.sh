@@ -5,8 +5,9 @@
 
 set -e
 
-PLUGIN_DIR="/run/media/pctorre/HddCompiler/mcp/mcp-libre/plugin"
-BUILD_DIR="/run/media/pctorre/HddCompiler/mcp/mcp-libre/build"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN_DIR="$SCRIPT_DIR"
+BUILD_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)/build"
 EXTENSION_NAME="libreoffice-mcp-extension"
 VERSION="1.0.0"
 
